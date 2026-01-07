@@ -271,9 +271,10 @@
             <select id="reciterSelect" onchange="changeReciter()" style="padding: 12px 20px; border-radius: 25px; border: 2px solid #667eea; font-size: 1em; background: white; cursor: pointer; margin-left: 10px;">
                 <option value="6"  selected>Mahmoud Khalil Al-Husary</option>
             </select>
-            <button onclick="playAll()" id="playBtn">▶️ تشغيل الكل</button>
-            <button onclick="playLoop()">🔁 تشغيل متكرر</button>
+            <button onclick="playAll()" id="playBtn">▶️ تشغيل القرآن</button>
+            <button onclick="playLoop()">🔁 تكرار</button>
             <button onclick="stopAll()">⏹️ إيقاف</button>
+            <button onclick="playTafsirAudio()" id="tafsirAudioBtn" style="background: #e67e22; border-color: #e67e22; color: white;">🎧 تشغيل التفسير</button>
         </div>
         
         <div class="progress-bar">
@@ -359,7 +360,7 @@
         <div class="footer">
             <p>🌙 جُعل بواسطة API Quran Foundation</p>
             <p style="margin-top: 10px; font-size: 0.9em;">
-                2026-01-07 23:18
+                2026-01-08 00:35
             </p>
         </div>
     </div>
@@ -368,10 +369,14 @@
         const verses = [{"key": "102:1", "text": " أَلْهَىٰكُمُ ٱلتَّكَاثُرُ", "audio": {"6": "https://mirrors.quranicaudio.com/everyayah/Husary_64kbps/102001.mp3"}, "tafsir": "قوله - سبحانه - : ( أَلْهَاكُمُ ) من اللهو وهو الغفلة عن مواطن الخير ، والانشغال عما هو نافع .والتكاثر : التبارى والتباهى بالكثرة فى شئ مرغوب فيه كالمال والجاه . .أى : شغلكم - أيها الناس - التباهى والتفاخر بكثرة الأموال والأولاد والعشيرة ، كما ألهاكم حب الدنيا عن القيام بما كلفناكم به . .", "page": 600, "juz": 30}, {"key": "102:2", "text": "حَتَّىٰ زُرْتُمُ ٱلْمَقَابِرَ", "audio": {"6": "https://mirrors.quranicaudio.com/everyayah/Husary_64kbps/102002.mp3"}, "tafsir": "( حتى زُرْتُمُ المقابر ) أى : بقيتم على هذه الحال ، حتى أتاكم الموت ، ودفنتم فى قبوركم ، وانصرف عنكم أحب الناس إليكم ، وبقيتم وحدكم .والخطاب عام لكل عاقل ، ويدخل فيه المشركون والفاسقون ، الذين آثروا الدنيا على الآخرة دخولا أوليا .فالمراد بزيارة المقابر : انتهاء الآجال ، والدفن فى القبور بعد الموت . وعبر - سبحانه - عن ذلك بالزيارة . لأن الميت يأتى إلى القبر كالزائر له ، ثم بعد ذلك يخرج منه يوم البعث والنشور ، للحساب والجزاء ، فوجوده فى القبر إنما هو وجود مؤقت بوقت يعلمه الله - تعالى - .وقد روى أن أعرابيا عندما سمع هذه الآية قال : بعثوا ورب الكعبة ، فقيل له كيف ذلك؟ فقال : لأن الزائر لابد أن يرتحل .وقد نهى النبى صلى الله عليه وسلم عن التهالك على حطام الدنيا ، فى أحاديث كثيرة منها ما رواه مسلم فى صحيحه عن عبد الله بن الشَّخَّير قال : انتهيت إلى رسول الله صلى الله عليه وسلم وهو يقول : \" ألهاكم التكاثر قال : يقول ابن آدم مالى مالى ، وهل لك من مالك يابن آدم ، آدم إلا ما أكلت فأفنيت أو لبست فأبليت ، أو تصدقت فأمضيت \" .", "page": 600, "juz": 30}, {"key": "102:3", "text": "كَلَّا سَوْفَ تَعْلَمُونَ", "audio": {"6": "https://mirrors.quranicaudio.com/everyayah/Husary_64kbps/102003.mp3"}, "tafsir": "وقوله - تعالى - : ( كَلاَّ سَوْفَ تَعْلَمُونَ . ثُمَّ كَلاَّ سَوْفَ تَعْلَمُونَ ) ردع وزجر عن الانشغال عن طاعة الله ، وعن التكاثر بالأموال والأولاد .وكرر لفظ \" كلا \" ثلاث مرات فى هذه السورة ، لتأكيد هذا الزجر والردع عن كل ما يشغل الإِنسان عن وجوه الخير والبر .والتبعير بقوله : ( سَوْفَ ) لزيادة الزجر ، ولتحقيق حصول العلم ، وحذف مفعول ( تَعْلَمُونَ ) لظهوره من المقام . أى : اتركوا التشاغل بالدنيا والتفاخر بالأموال ، فإنكم إن بقيتم على ذلك بدون توبة صادقة ، فسوف تعرفون سوء عاقبة ذلك معرفة لا يخامرهها شك ، ولا يفارقها ريب .", "page": 600, "juz": 30}, {"key": "102:4", "text": "ثُمَّ كَلَّا سَوْفَ تَعْلَمُونَ", "audio": {"6": "https://mirrors.quranicaudio.com/everyayah/Husary_64kbps/102004.mp3"}, "tafsir": "وجملة ( ثُمَّ كَلاَّ سَوْفَ تَعْلَمُونَ ) مؤكدة تأكيدا لفظيا للجملة التى قبلها ، وهذا التأكيد المقصود منه المبالغة فى الردع والزجر والتحذير من التكاثر والتفاخر . .", "page": 600, "juz": 30}, {"key": "102:5", "text": "كَلَّا لَوْ تَعْلَمُونَ عِلْمَ ٱلْيَقِينِ", "audio": {"6": "https://mirrors.quranicaudio.com/everyayah/Husary_64kbps/102005.mp3"}, "tafsir": "ثم أضاف - سبحانه - إلى كل ما سبق من تحذيرات ، زواجر أخرى فقال : ( كَلاَّ لَوْ تَعْلَمُونَ عِلْمَ اليقين . لَتَرَوُنَّ الجحيم . ثُمَّ لَتَرَوُنَّهَا عَيْنَ اليقين ) . .وجواب \" لو \" محذوف لقصد التهويل ، و \" اليقين \" فعيل بمعنى مفعول ، وعلم اليقين هو العلم الجازم المطابق للواقع الذى لا شك فيه . والإِضافة فيه من إضافة الموصوف إلى الصفة ، أو من إضافة العام إلى الخاص .أى : لو تعلمون - علما موثوقا به - سوء عاقبة انشغالكم عن ذكر الله - تعالى - وتكاثركم وتفاخركم بالأموال والأولاد . . لشغلكم هذا العلم اليقينى عما أنتم عليه من التشاغل والتكاثر .فالمقصود بهذه الجملة الكريمة : الزيادة فى ردعهم ، لأنه من عادة الغافلين المكابرين . أنك إذا ذكرتهم بالحق وبالرشاد . . زعموا أنهم ليسوا فى حاجة إلى هذا الإرشاد ، لأنهم أهل علم ومعرفة بالعواقب ، فكانت هذه الآية الكريمة بمثابة تنبيههم بأنهم ليسوا على شئ من العلم الصحيح ، لأنهم لو كانوا كذلك لما تفاخروا ، ولما تكاثروا .", "page": 600, "juz": 30}, {"key": "102:6", "text": "لَتَرَوُنَّ ٱلْجَحِيمَ", "audio": {"6": "https://mirrors.quranicaudio.com/everyayah/Husary_64kbps/102006.mp3"}, "tafsir": "وقوله - سبحانه - : ( لَتَرَوُنَّ الجحيم ) جواب قسم مقدر ، قصد به تأكيد الوعيد الشديد فى التهديد ، وبيان أن المهدد به رؤية الجحيم فى الآخرة ، أى : والله لترون الجحيم فى الآخرة .", "page": 600, "juz": 30}];
         const reciters = [{"id": 6, "name": "Mahmoud Khalil Al-Husary", "default": true}];
         const chaptersMap = {"102": "التكاثر"};
+        const tafsirAudioUrls = {"102": "https://mcdn.podbean.com/mf/web/jzpndy/102_surat_altakathur.mp3"};
+        const enableTafsirAudio = {"102": "https://mcdn.podbean.com/mf/web/jzpndy/102_surat_altakathur.mp3"};
         let currentIndex = 0;
         let isPlaying = false;
         let isLooping = false;
+        let isTafsirPlaying = false;
         let audio = new Audio();
+        let tafsirAudio = new Audio();
         let currentReciterId = document.getElementById('reciterSelect').value;
         
         // Générer le HTML des versets
@@ -514,6 +519,74 @@
                 playVerse(currentIndex);
             }
         }
+
+        // Fonctions pour l'audio du tafsir
+        function playTafsirAudio() {
+            if (!enableTafsirAudio || Object.keys(tafsirAudioUrls).length === 0) {
+                alert('Audio du tafsir non disponible');
+                return;
+            }
+
+            if (isTafsirPlaying) {
+                // Pause du tafsir
+                tafsirAudio.pause();
+                isTafsirPlaying = false;
+                document.getElementById('tafsirAudioBtn').innerHTML = '🎧 تشغيل التفسير';
+                document.getElementById('tafsirAudioBtn').style.background = '#e67e22';
+            } else {
+                // Arrêter l'audio du Coran si en cours
+                if (isPlaying) {
+                    stopAll();
+                }
+
+                // Récupérer toutes les sourates uniques
+                const uniqueChapters = [...new Set(verses.map(v => parseInt(v.key.split(':')[0])))];
+
+                // Pour l'instant, jouer le tafsir de la première sourate
+                const firstChapter = uniqueChapters[0];
+
+                if (tafsirAudioUrls[firstChapter]) {
+                    tafsirAudio.src = tafsirAudioUrls[firstChapter];
+                    tafsirAudio.play();
+                    isTafsirPlaying = true;
+                    document.getElementById('tafsirAudioBtn').innerHTML = '⏸️ إيقاف التفسير';
+                    document.getElementById('tafsirAudioBtn').style.background = '#28a745';
+
+                    tafsirAudio.onended = () => {
+                        isTafsirPlaying = false;
+                        document.getElementById('tafsirAudioBtn').innerHTML = '🎧 تشغيل التفسير';
+                        document.getElementById('tafsirAudioBtn').style.background = '#e67e22';
+                    };
+                } else {
+                    alert('Audio du tafsir non disponible pour cette sourate');
+                }
+            }
+        }
+
+        function stopTafsirAudio() {
+            if (isTafsirPlaying) {
+                tafsirAudio.pause();
+                tafsirAudio.currentTime = 0;
+                isTafsirPlaying = false;
+                if (document.getElementById('tafsirAudioBtn')) {
+                    document.getElementById('tafsirAudioBtn').innerHTML = '🎧 تشغيل التفسير';
+                    document.getElementById('tafsirAudioBtn').style.background = '#e67e22';
+                }
+            }
+        }
+
+        // Modifier stopAll pour arrêter aussi le tafsir
+        const originalStopAll = stopAll;
+        stopAll = function() {
+            audio.pause();
+            audio.currentTime = 0;
+            isPlaying = false;
+            currentIndex = 0;
+            document.getElementById('playBtn').textContent = '▶️ تشغيل القرآن';
+            document.querySelectorAll('.verse').forEach(v => v.classList.remove('playing'));
+            document.getElementById('progress').style.width = '0%';
+            stopTafsirAudio();
+        };
     </script>
 </body>
 </html>
